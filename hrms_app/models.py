@@ -1,5 +1,6 @@
 from django.db import models
 
+# creating employee model to store all data of employees
 class Employee(models.Model):
     name = models.CharField(max_length=100)
     designation = models.CharField(max_length=100)
@@ -9,6 +10,7 @@ class Employee(models.Model):
     def __str__(self):
         return self.name
 
+# creating attendance model to take attendance record of employees
 class Attendance(models.Model):
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     attendance_date = models.DateField()

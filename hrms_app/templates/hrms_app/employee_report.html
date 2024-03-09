@@ -40,6 +40,7 @@
             <th>Department</th>
             <th>Employee Count</th>
         </tr>
+        {% comment %} fetch data from employee model {% endcomment %}
         {% for department_count in department_counts %}
         <tr>
             <td>{{ department_count.department }}</td>

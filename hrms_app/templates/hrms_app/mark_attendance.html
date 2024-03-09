@@ -45,6 +45,7 @@
 </head>
 <body>
     <h1>Mark Attendance</h1>
+    {% comment %} creating form to mark the attendance for each employee {% endcomment %}
     <form method="post">
         {% csrf_token %}
         {% for employee in employees %}

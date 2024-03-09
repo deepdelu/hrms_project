@@ -37,6 +37,7 @@
     </style>
 </head>
 <body>
+    {% comment %} fetch the employee attendace list {% endcomment %}
     {% for att in attendance_records %}
     <h1>Attendance Details for {{ att.employee }}</h1>
     <table>
@@ -44,6 +45,7 @@
             <th>Date</th>
             <th>Status</th>
         </tr>
+        {% comment %} retrive attendace of all employees seperatly {% endcomment %}
         {% for record in att.attendance_records %}
         <tr>
             <td>{{ record.attendance_date }}</td>

@@ -38,6 +38,7 @@
 </head>
 <body>
     <h1>Employees List</h1>
+    {% comment %} creating table for the employees list  {% endcomment %}
     <table>
         <tr>
             <th>Emp-ID</th>
@@ -46,6 +47,7 @@
             <th>Department</th>
             <th>Date of Joining</th>
         </tr>
+        {% comment %} featching data from the views file function employees {% endcomment %}
         {% for employee in employees %}
         <tr>
             <td>{{ employee.id }}</td>

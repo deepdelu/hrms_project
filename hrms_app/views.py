@@ -4,16 +4,28 @@ from django.utils import timezone
 from django.db.models import Count 
 from .forms import *
 
+# creating function for the home.html
 def home(request):
     employee = Employee.objects.first()
     return render(request, 'hrms_app/home.html', {'employee': employee})
 
+# creating function for the employees.html
 def employees(request):
     employees_list = Employee.objects.all()
     return render(request, 'hrms_app/employees.html', {'employees': employees_list})
 
+# creating function for the add_employee.html
+def add_employee(request):
+    if request.method == 'POST':
+        form = EmployeeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('employees')  # Redirect to employees list page after adding employee
+    else:
+        form = EmployeeForm()
+    return render(request, 'hrms_app/add_employee.html', {'form': form})
 
-
+# creating function for the mark_attendance.html
 def mark_attendance(request):
     employees = Employee.objects.all()
     if request.method == 'POST':
@@ -29,7 +41,7 @@ def mark_attendance(request):
         return render(request, 'hrms_app/mark_attendance.html', {'employees': employees})
 
 
-
+# creating function for the attendance_details.html
 def attendance_details(request):
     employees = Employee.objects.all()
     attendance_records = []
@@ -41,20 +53,10 @@ def attendance_details(request):
     return render(request, 'hrms_app/attendance_details.html', {'attendance_records': attendance_records})
 
 
-
+# creating function for the employee_reports.html
 def employee_report(request):
     # Get the count of employees in each department
     department_counts = Employee.objects.values('department').annotate(total=Count('department'))
     # Pass the data to the template
     return render(request, 'hrms_app/employee_report.html', {'department_counts': department_counts})
 
-
-def add_employee(request):
-    if request.method == 'POST':
-        form = EmployeeForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('employees')  # Redirect to employees list page after adding employee
-    else:
-        form = EmployeeForm()
-    return render(request, 'hrms_app/add_employee.html', {'form': form})

@@ -33,8 +33,10 @@
 </head>
 <body>
     <h1>Add Employee</h1>
+    {% comment %} createing form to add new employee {% endcomment %}
     <form method="post">
         {% csrf_token %}
+        {% comment %} get the form from the forms.py {% endcomment %}
         {{ form.as_p }}
         <button type="submit">Add</button>
     </form>
