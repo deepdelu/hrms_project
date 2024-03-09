@@ -1,0 +1,18 @@
+In this HRMS project we have two schema 
+1. Employee
+2. Attendance
+
+1. Employee :- This schema is used to store the details of the employees.
+    There are the following fields in this schema.
+    1. id - It is the id of employee which store the integer data and it is the primary key.
+    2. name - It is used to store the name of the employee which store the textual data.
+    3. designation - It is used to store the designation of the employee which store the textual data.
+    4. department - It is used to store the ddepartment of the employee which store the textual data.
+    5. date_of_joining - It is used to store the joining date of the employee which store the data in format of date.
+
+2. Attendance :- This schema is used to store the attendance of the employees.
+    There are the following fields in this schema.
+    1. id - It is the id of employee which store the integer data and it is the primary key.
+    2. attendance_date - It is used to store the date of the attendance of each employee.
+    3. status - It is used to store the present or absent status.
+    4. employee_id - It is the foregin key references to the employee table.
