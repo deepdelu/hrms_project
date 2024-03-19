@@ -9,9 +9,13 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
         }
         h1 {
             color: #333;
+            text-align: center;
+            margin-top: 20px;
         }
         form {
             padding: 20px;
@@ -21,6 +25,18 @@
             width: 300px;
             margin: 0 auto;
         }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="date"] {
+            width: 93%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
         button[type="submit"] {
             background-color: #007bff;
             color: #fff;
@@ -28,16 +44,27 @@
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <h1>Add Employee</h1>
-    {% comment %} createing form to add new employee {% endcomment %}
     <form method="post">
         {% csrf_token %}
-        {% comment %} get the form from the forms.py {% endcomment %}
-        {{ form.as_p }}
+        <label for="id_name">Name:</label>
+        <input type="text" id="id_name" name="name">
+    
+        <label for="id_designation">Designation:</label>
+        <input type="text" id="id_designation" name="designation">
+    
+        <label for="id_department">Department:</label>
+        <input type="text" id="id_department" name="department">
+    
+        <label for="id_date_of_joining">Date of Joining:</label>
+        <input type="date" id="id_date_of_joining" name="date_of_joining">
+    
         <button type="submit">Add</button>
     </form>
 </body>
